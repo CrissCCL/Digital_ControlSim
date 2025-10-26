@@ -28,7 +28,8 @@ G_p(s)= \frac{20}{50s + 1}
 $$
 
 This model is discretized with sampling period  
-$$T_s = 0.1\,s$$  
+$$T_s = 0.1 s$$  
+
 using Zero-Order Hold.
 
 ```matlab
