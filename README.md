@@ -69,6 +69,7 @@ To emulate microcontroller behavior, the controller output is **limited to a pre
 - Reflects PWM or DAC limits on embedded hardware  
 - Avoids integrator wind-up if actuator saturates  
 Example:
+
 $$
 0\% \leq u(n) \leq 100\%
 $$
