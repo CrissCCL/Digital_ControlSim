@@ -102,7 +102,7 @@ subplot(2,1,2)
 plot(t,Usim,'+','MarkerSize', 4)
 ylabel('Control output')
 xlabel('Time [s]')
-
+```
 
 Below are example plots generated with the script:
 
