@@ -71,7 +71,7 @@ To emulate microcontroller behavior, the controller output is **limited to a pre
 Example:
 
 $$
-0\% \leq u(n) \leq 100\%
+0 \% \leq u(n) \leq 100 \%
 $$
 
 Without saturation, simulation results may falsely assume an ideal actuator with infinite authority, which never matches microcontroller deployments.
