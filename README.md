@@ -1,109 +1,76 @@
-## 🚀 DigitalControlSim
+# 🧪 Digital Control Simulation — First Order System + Saturation
 
-## 📖 Overview
-This repository provides a simple **MATLAB/Octave tutorial** to simulate a discrete-time control system with saturation, illustrating the behavior you would expect in a microcontroller implementation.  
-The tutorial focuses on:
+This repository provides a **tutorial-oriented simulation** of a **digital PI control loop** applied to a **first-order system identified via non-parametric methods**.  
+The objective is to reproduce in simulation the **same discrete behavior** expected when the controller is later implemented on a **microcontroller**, including **actuator saturation**.
 
-- Discretizing a continuous-time plant
-- Implementing a digital PI controller
-- Adding saturation limits to emulate actuator constraints
-- Visualizing closed-loop response
+## 🎯 Goals of the Tutorial
 
-> ⚠️ **Note:** This is a simulation only. No hardware is involved.
+- Model a first-order process identified experimentally (non-parametric fit)
+- Discretize the plant using Zero-Order Hold (ZOH)
+- Implement a **discrete PI controller** using incremental form
+- Add **saturation limits** to emulate real actuator constraints
+- Compare reference tracking and control signal behavior
 
-## 📂 Contents
-- `/code` → MATLAB/Octave scripts
-- `/docs` → example plots
+---
 
-## 🔄 Simulation Setup
-The example plant is:
+## 🧩 System Model
 
-$$
-G(s) = \frac{20}{50 s + 1}
-$$
-
-Discretized using Zero-Order Hold (ZOH) with sampling period:
+A first-order model without delay was identified experimentally from step-response data:
 
 $$
-T_s = 0.1 \text{ s}
+G_p(s) = \frac{K}{\tau s + 1}
 $$
 
-The discrete-time PI controller is implemented as:
+In the included example:
 
 $$
-u[n] = u[n-1] + K_0 e[n] + K_1 e[n-1]
+G_p(s)= \frac{20}{50s + 1}
 $$
 
-With:
+This model is discretized with sampling period  
+$$T_s = 0.1\,s$$  
+using Zero-Order Hold.
+
+---
+
+## ⚙️ Digital PI Controller (Incremental Form)
+
+The discrete control law implemented is:
 
 $$
-K_0 = K_p + K_p \frac{T_s}{2 T_i}, \quad
-K_1 = -K_p + K_p \frac{T_s}{2 T_i}
+u(k)=u(k-1)+K_0 e(k)+K_1 e(k-1)
 $$
 
-Saturation limits are applied:
+With tuning parameters derived from:
+- Proportional gain: \(K_p\)
+- Integral time: \(T_i\)
+- Sampling time: \(T_s\)
+
+Where
 
 $$
-0 \le u[n] \le 100
+K_0 = K_p + \frac{K_p}{2T_i}T_s
+$$
+
+$$
+K_1 = -K_p + \frac{K_p}{2T_i}T_s
 $$
 
 ---
 
-## 🧪 Example Script
+## 🔒 Actuator Saturation
+
+To emulate real microcontroller behavior — such as PWM range or fixed DAC limits —  
+a **hard saturation** is enforced:
 
 ```matlab
-clear all; close all; clc
-
-%% Discretize the plant
-Ts=0.1;
-gp=tf(20,[50 1]);
-gpd=c2d(gp,Ts,'zoh');
-
-%% Discrete PI controller parameters
-Kp=0.8;
-Ti=9;
-K0=Kp+Kp*Ts/(2*Ti);
-K1=-Kp+Kp*Ts/(2*Ti);
-
-%% Closed-loop simulation via direct integration
-[num,den]=tfdata(gpd,'v');
-t=0:Ts:60;
-Ref=ones(1,length(t));
-y1=0; u1=0; error1=0;
-
-for i=1:length(t)
-    % Process simulation
-    y(i) = num(2)*u1 - den(2)*y1;
-
-    % Control computation
-    error = Ref(i) - y(i);
-    Usim(i) = u1 + K0*error + K1*error1;
-
-    % Saturation
-    if Usim(i) > 100
-        Usim(i) = 100;
-    elseif Usim(i) < 0
-        Usim(i) = 0;
-    end
-
-    % Update states
-    y1 = y(i);
-    u1 = Usim(i);
-    error1 = error;
+if Usim(i) > 100
+    Usim(i)=100;
+end
+if Usim(i) < 0
+    Usim(i)=0;
 end
 
-%% Plot results
-subplot(2,1,1)
-plot(t,y,'+',t,Ref,'--','MarkerSize', 4)
-xlabel('Time [s]')
-ylabel('Response')
-legend('Sim','Ref')
-
-subplot(2,1,2)
-plot(t,Usim,'+','MarkerSize', 4)
-ylabel('Control output')
-xlabel('Time [s]')
-```
 
 Below are example plots generated with the script:
 
