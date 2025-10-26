@@ -1,4 +1,4 @@
-# 🚀 DigitalControlSim
+## 🚀 DigitalControlSim
 
 ## 📖 Overview
 This repository provides a simple **MATLAB/Octave tutorial** to simulate a discrete-time control system with saturation, illustrating the behavior you would expect in a microcontroller implementation.  
@@ -13,6 +13,7 @@ The tutorial focuses on:
 
 ## 📂 Contents
 - `/code` → MATLAB/Octave scripts
+- `/docs` → example plots
 
 ## 🔄 Simulation Setup
 The example plant is:
@@ -110,3 +111,5 @@ Below are example plots generated with the script:
 <img width="500" alt="Control simulation" src="https://github.com/user-attachments/assets/f208de9a-0f46-4059-af58-50642f70e590" />
 </p>
 
+## 📜 License
+MIT License
