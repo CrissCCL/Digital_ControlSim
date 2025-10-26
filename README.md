@@ -11,8 +11,6 @@ The objective is to reproduce in simulation the **same discrete behavior** expec
 - Add **saturation limits** to emulate real actuator constraints
 - Compare reference tracking and control signal behavior
 
----
-
 ## 🧩 System Model
 
 A first-order model without delay was identified experimentally from step-response data:
@@ -31,7 +29,6 @@ This model is discretized with sampling period
 $$T_s = 0.1\,s$$  
 using Zero-Order Hold.
 
----
 
 ## ⚙️ Digital PI Controller (Incremental Form)
 
@@ -56,7 +53,6 @@ $$
 K_1 = -K_p + \frac{K_p}{2T_i}T_s
 $$
 
----
 
 ## 🔒 Actuator Saturation
 
