@@ -87,11 +87,11 @@ To emulate real microcontroller behavior — such as PWM range or fixed DAC limi
 a **hard saturation** is enforced:
 
 ```matlab
-if Usim(i) > 100
+if u(i) > 100
     Usim(i)=100;
 end
-if Usim(i) < 0
-    Usim(i)=0;
+if u(i) < 0
+    u(i)=0;
 end
 ```
 
