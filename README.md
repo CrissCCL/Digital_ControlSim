@@ -31,6 +31,17 @@ This model is discretized with sampling period
 $$T_s = 0.1\,s$$  
 using Zero-Order Hold.
 
+```matlab
+Ts = 0.1;
+gp  = tf(20,[50 1]);           % First-order plant
+gpd = c2d(gp,Ts,'zoh');        % Discrete plant
+[num,den] = tfdata(gpd,'v');
+```
+The discrete model implemented is:
+
+```matlab
+y(k) = num(2)*u1 - den(2)*y1;
+```
 
 ## ⚙️ Digital PI Controller (Incremental Form)
 
