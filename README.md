@@ -107,5 +107,6 @@ xlabel('Time [s]')
 Below are example plots generated with the script:
 
 <p align="center">
-<img width="500" alt="UAV Control Loop" src="https://github.com/user-attachments/assets/f4d4774c-f4a1-4fbf-a137-f552656dd12e" />
+<img width="500" alt="Control simulation" src="https://github.com/user-attachments/assets/f208de9a-0f46-4059-af58-50642f70e590" />
 </p>
+
