@@ -16,15 +16,19 @@ K1 = -Kp + Kp*Ts/(2*Ti);
 t   = 0:Ts:60;
 Ref = ones(1,length(t));
 
-y1 = 0; u1 = 0; e1 = 0;   % Histories
+% Histories
+y1 = 0; 
+u1 = 0; 
+error = 0; 
+error1 = 0;  
 
 for k = 1:length(t)
     % ---- PLANT ----
     y(k) = num(2)*u1 - den(2)*y1;
 
     % ---- FEEDBACK ----
-    e  = Ref(k) - y(k);
-    u  = u1 + K0*e + K1*e1;
+    error  = Ref(k) - y(k);
+    u  = u1 + K0*error + K1*error1;
 
     % ---- SATURATION ----
     if u > 100
@@ -37,7 +41,7 @@ for k = 1:length(t)
     % ---- UPDATE STATES ----
     y1 = y(k);
     u1 = u;
-    e1 = e;
+    error1 = error;
 
     Usim(k) = u;
 end
