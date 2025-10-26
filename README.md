@@ -13,7 +13,6 @@ The tutorial focuses on:
 
 ## 📂 Contents
 - `/code` → MATLAB/Octave scripts
-- `/docs` → example plots
 
 ## 🔄 Simulation Setup
 The example plant is:
@@ -103,3 +102,10 @@ subplot(2,1,2)
 plot(t,Usim,'+','MarkerSize', 4)
 ylabel('Control output')
 xlabel('Time [s]')
+
+
+Below are example plots generated with the script:
+
+<p align="center">
+<img width="500" alt="UAV Control Loop" src="https://github.com/user-attachments/assets/f4d4774c-f4a1-4fbf-a137-f552656dd12e" />
+</p>
