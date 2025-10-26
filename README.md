@@ -1,7 +1,9 @@
 # 🧪 Digital Control Simulation — First Order System + Saturation
 
 This repository provides a **tutorial-oriented simulation** of a **digital PI control loop** applied to a **first-order system identified via non-parametric methods**.  
-The objective is to reproduce in simulation the **same discrete behavior** expected when the controller is later implemented on a **microcontroller**, including **actuator saturation**.
+The objective is to reproduce in simulation the **same discrete behavior** expected when the controller is later implemented on a **microcontroller** (Arduino, Teensy, ESP32, etc.), including **actuator saturation**.
+
+> ⚠️ **Note:** This tutorial is for **educational purposes only**. It focuses on simulation and understanding discrete-time digital control.
 
 ## 🎯 Goals of the Tutorial
 
@@ -38,6 +40,12 @@ $$
 u(k)=u(k-1)+K_0 e(k)+K_1 e(k-1)
 $$
 
+```matlab
+    error  = Ref(k) - y(k);
+    u  = u1 + K0*error + K1*error1;
+```
+
+
 With tuning parameters derived from:
 - Proportional gain: \(K_p\)
 - Integral time: \(T_i\)
@@ -55,7 +63,14 @@ $$
 
 
 ## 🔒 Actuator Saturation
+To emulate microcontroller behavior, the controller output is **limited to a predefined range**:
 
+- Prevents unrealistic actuator commands  
+- Reflects PWM or DAC limits on embedded hardware  
+- Avoids integrator wind-up if actuator saturates  
+Example: $$ 0\% \leq u(n) \leq 100\%$$
+
+Without saturation, simulation results may falsely assume an ideal actuator with infinite authority, which never matches microcontroller deployments.
 To emulate real microcontroller behavior — such as PWM range or fixed DAC limits —  
 a **hard saturation** is enforced:
 
