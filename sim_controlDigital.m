@@ -5,9 +5,11 @@ Ts = 0.1;
 gp  = tf(20,[50 1]);           % First-order plant
 gpd = c2d(gp,Ts,'zoh');        % Discrete plant
 
-%% Discrete PI Controller (Tustin)
-Kp = 0.8;
-Ti = 9;
+%% PI controller parameters
+Kp = 0.8; % propotional gain 
+Ti = 9; % integral time
+
+%% PI controller parameters discretization 
 K0 = Kp + Kp*Ts/(2*Ti);
 K1 = -Kp + Kp*Ts/(2*Ti);
 
