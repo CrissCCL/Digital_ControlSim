@@ -57,11 +57,10 @@ $$
     u  = u1 + K0*error + K1*error1;
 ```
 
-
 With tuning parameters derived from:
-- Proportional gain: \(K_p\)
-- Integral time: \(T_i\)
-- Sampling time: \(T_s\)
+- Proportional gain: $$K_p$$
+- Integral time: $$T_i$$
+- Sampling time: $$T_s$$
 
 Where
 
