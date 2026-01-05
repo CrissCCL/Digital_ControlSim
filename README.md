@@ -72,13 +72,13 @@ $$
 
 Matlab
 ```Matlab
-    error  = Ref(k) - y(k);
-    u  = u1 + K0*error + K1*error1;
+error  = Ref(k) - y(k);
+u  = u1 + K0*error + K1*error1;
 ```
 Python
 ```Python
-    error = Ref[k] - y[k]
-    u = u1 + K0 * error + K1 * error1
+error = Ref[k] - y[k]
+u = u1 + K0 * error + K1 * error1
 ```
 
 With tuning parameters derived from:
