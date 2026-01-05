@@ -70,9 +70,15 @@ $$
 u(k)=u(k-1)+K_0 e(k)+K_1 e(k-1)
 $$
 
-```matlab
+Matlab
+```Matlab
     error  = Ref(k) - y(k);
     u  = u1 + K0*error + K1*error1;
+```
+Python
+```Python
+    error = Ref[k] - y[k]
+    u = u1 + K0 * error + K1 * error1
 ```
 
 With tuning parameters derived from:
