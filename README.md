@@ -32,16 +32,34 @@ $$T_s = 0.1 s$$
 
 using Zero-Order Hold.
 
-```matlab
+Matlab
+```Matlab
 Ts = 0.1;
 gp  = tf(20,[50 1]);           % First-order plant
 gpd = c2d(gp,Ts,'zoh');        % Discrete plant
 [num,den] = tfdata(gpd,'v');
 ```
+Python
+```Python
+Ts = 0.1
+gp  = ctrl.tf([20], [50, 1])              # First-order plant
+gpd = ctrl.c2d(gp, Ts, method='zoh')      # Discrete plant (ZOH)
+num, den = ctrl.tfdata(gpd)   # returns nested lists/arrays
+num = np.asarray(num, dtype=float).squeeze()
+den = np.asarray(den, dtype=float).squeeze()
+b1 = float(num[1])
+a1 = float(den[1])
+```
+
 The discrete model implemented is:
 
-```matlab
+Matlab
+```Matlab
 y(k) = num(2)*u1 - den(2)*y1;
+```
+Python
+```Python
+y[k] = b1 * u1 - a1 * y1
 ```
 
 ## ⚙️ Digital PI Controller (Incremental Form)
@@ -86,6 +104,7 @@ Without saturation, simulation results may falsely assume an ideal actuator with
 To emulate real microcontroller behavior — such as PWM range or fixed DAC limits —  
 a **hard saturation** is enforced:
 
+Matlab
 ```matlab
 if u > 100
     u=100;
@@ -93,6 +112,13 @@ end
 if u< 0
     u=0;
 end
+```
+Python
+```Python
+if u > 100:
+    u = 100
+if u < 0:
+    u = 0
 ```
 
 Below are example plots generated with the script:
