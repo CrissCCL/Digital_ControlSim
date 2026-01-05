@@ -101,5 +101,8 @@ Below are example plots generated with the script:
 <img width="500" alt="Control simulation" src="https://github.com/user-attachments/assets/f208de9a-0f46-4059-af58-50642f70e590" />
 </p>
 
+## 🤝 Support projects
+ Support me on Patreon [https://www.patreon.com/c/CrissCCL](https://www.patreon.com/c/CrissCCL)
+
 ## 📜 License
 MIT License
