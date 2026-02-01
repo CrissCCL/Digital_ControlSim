@@ -1,5 +1,13 @@
 # 🧪 Digital Control Simulation — First Order System + Saturation
 
+![MATLAB](https://img.shields.io/badge/MATLAB-Simulation-blue)
+![Control](https://img.shields.io/badge/Control-Digital-orange)
+![Signals](https://img.shields.io/badge/Signals-Discrete--Time-lightgrey)
+![Education](https://img.shields.io/badge/Education-Labs-lightgrey)
+![License](https://img.shields.io/badge/License-See%20repo-lightgrey)
+
+
+## Overview
 This repository provides a **tutorial-oriented simulation** of a **digital PI control loop** applied to a **first-order system identified via non-parametric methods**.  
 The objective is to reproduce in simulation the **same discrete behavior** expected when the controller is later implemented on a **microcontroller** (Arduino, Teensy, ESP32, etc.), including **actuator saturation**.
 
