@@ -4,7 +4,7 @@
 ![Control](https://img.shields.io/badge/Control-Digital-orange)
 ![Signals](https://img.shields.io/badge/Signals-Discrete--Time-lightgrey)
 ![Education](https://img.shields.io/badge/Education-Labs-lightgrey)
-![License](https://img.shields.io/badge/License-See%20repo-lightgrey)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
 
 ## Overview
