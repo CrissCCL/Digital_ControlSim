@@ -1,6 +1,7 @@
 # 🧪 Digital Control Simulation — First Order System + Saturation
 
 ![MATLAB](https://img.shields.io/badge/MATLAB-Simulation-blue)
+![Python](https://img.shields.io/badge/Python-Analysis-green)
 ![Control](https://img.shields.io/badge/Control-Digital-orange)
 ![Signals](https://img.shields.io/badge/Signals-Discrete--Time-lightgrey)
 ![Education](https://img.shields.io/badge/Education-Labs-lightgrey)
